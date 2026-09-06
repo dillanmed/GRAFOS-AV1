@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Visualização interativa do grafo das Unidades Federativas do Brasil." />
+    <title>Brasil em Grafos | Teoria dos Grafos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div>
+          <h1>Brasil em <em>Grafos</em></h1>
+        </div>
+        <div class="hero-badge"><strong id="ufCount">27</strong><span>UFs analisadas</span></div>
+      </header>
+
+      <section class="workspace">
+        <aside class="control-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Consulta do vértice</p>
+            <h2>Escolha uma UF</h2>
+          </div>
+          <label for="stateSelect">Unidade Federativa</label>
+          <div class="select-wrap">
+            <select id="stateSelect" aria-label="Selecione uma Unidade Federativa">
+              <option value="" selected disabled>Selecione um estado</option>
+            </select>
+          </div>
+          <button id="visualizeButton" type="button">Visualizar estado <span>→</span></button>
+          <p class="map-hint">Ou clique diretamente em uma UF no mapa.</p>
+
+          <div class="state-card empty" id="stateCard" aria-live="polite">
+            <div class="state-card-top"><span class="state-code">--</span><span class="color-dot" id="colorDot"></span></div>
+            <h3 id="stateName">Selecione uma UF</h3>
+            <p id="stateDescription">Os detalhes do vértice aparecerão aqui.</p>
+            <div class="degree-box"><span>Grau do vértice</span><strong id="degreeValue">--</strong></div>
+            <div class="neighbors-section"><span>Vértices adjacentes</span><div class="chips" id="neighborChips"></div></div>
+            <div class="adjacency-line"><span>Lista de adjacência</span><code id="adjacencyList">--</code></div>
+          </div>
+        </aside>
+
+        <section class="map-panel" aria-label="Mapa interativo do Brasil">
+          <div class="map-header">
+            <div><p class="eyebrow">Visualização geográfica</p><h2>Mapa de coloração</h2></div>
+            <p><span class="status-dot"></span> Clique no estado</p>
+          </div>
+          <div class="map-stage">
+            <object id="brazilMap" type="image/svg+xml" data="assets/mapa-brasil.svg" aria-label="Mapa interativo das Unidades Federativas brasileiras"></object>
+            <div id="tooltip" class="tooltip" role="tooltip"></div>
+          </div>
+          <div class="map-footer">
+            <div class="legend" id="legend" aria-label="Legenda das cores do grafo"></div>
+            <p>As cores representam a coloração gulosa do grafo: UFs adjacentes recebem cores distintas.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>
